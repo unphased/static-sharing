@@ -1,4 +1,4 @@
-#!/usr/bin/env -S node --import tsx/esm
+#!/usr/bin/env -S npx tsx
 import path from "path";
 import { test, LaunchTests } from "tst";
 import { fileURLToPath } from "url";
