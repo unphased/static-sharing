@@ -4,7 +4,7 @@
   "description": "node scripts supplementary to static-sharing repo",
   "main": "index.js",
   "scripts": {
-    "test": "./test/test.ts"
+    "test": "time node --import tsx/esm test/test.ts"
   },
   "author": "Steven Lu",
   "devDependencies": {
