@@ -4,7 +4,7 @@
   "description": "node scripts supplementary to static-sharing repo",
   "main": "index.js",
   "scripts": {
-    "test": "./test.ts"
+    "test": "./test/test.ts"
   },
   "author": "Steven Lu",
   "devDependencies": {
