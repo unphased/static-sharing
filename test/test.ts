@@ -7,7 +7,7 @@ const isProgramLaunchContext = () => {
   return fileURLToPath(import.meta.url) === process.argv[1];
 }
 
-isProgramLaunchContext() && LaunchTests(path.resolve(__dirname, '..'), {echo_test_logging: true});
+isProgramLaunchContext() && LaunchTests(path.resolve(__dirname), {echo_test_logging: true});
 
 export const trivial = test(({t, l}) => {
   t('exemptFromAsserting');
