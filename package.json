@@ -12,5 +12,6 @@
   },
   "dependencies": {
     "tsx": "^4.7.1"
-  }
+  },
+  "type": "module"
 }
