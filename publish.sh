@@ -70,6 +70,12 @@ for item in "${args[@]}"; do
   if [ ! -e "$item" ]; then
     echo "File/dir does not exist: $item"
     exit 1
+  else
+    # if dir show the files in it
+    if [ -d "$item" ]; then
+      echo "Files found in dir $item:"
+      find $item
+    fi
   fi
   if [ ! -r "$item" ]; then
     echo "File is not readable: $item"
@@ -84,7 +90,7 @@ dir="$date/$name"
 
 # confirm dir doesnt already exist or bail
 if [ -d "${0%/*}/$dir" ]; then
-  echo "Directory already exists: $dir"
+  echo "Directory already exists: $dir, bailing."
   exit 1
 fi
 
@@ -94,7 +100,7 @@ mkdir -p "${0%/*}/$dir"
 ORIGINAL_DIR=$(pwd)
 
 # Change to the script directory
-pushd "${0%/\*}" > /dev/null || exit 2
+pushd "${0%/*}" > /dev/null || exit 2
 
 # Check for uncommitted changes
 if ! git diff-index --quiet HEAD --; then
