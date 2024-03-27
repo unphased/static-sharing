@@ -4,7 +4,7 @@
   "description": "node scripts supplementary to static-sharing repo",
   "main": "index.js",
   "scripts": {
-    "test": "time node --import tsx/esm test/test.ts",
+    "test": "node --import tsx/esm test/test.ts",
     "watch-test": "bash -c 'watchexec --exts ts --only-emit-events --emit-events-to=json-stdio | while read line; do echo received: $line; echo \"Skipped $(timeout 1 cat | wc -l) further events\"; npm run test $1; done' _"
   },
   "author": "Steven Lu",
