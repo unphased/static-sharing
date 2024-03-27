@@ -103,7 +103,7 @@ ORIGINAL_DIR=$(pwd)
 pushd "${0%/*}" > /dev/null || exit 2
 
 # Check for uncommitted changes
-if ! git diff-index --quiet HEAD --; then
+if git diff-index --quiet HEAD --; then
     echo "Git is not in a clean state in this static-sharing repo. Please commit or stash your changes."
     # Restore the original working directory
     popd > /dev/null || exit 2
