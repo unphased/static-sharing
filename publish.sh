@@ -62,13 +62,17 @@ if [ ${#args[@]} -eq 0 ]; then
   mapfile -t args
 fi
 
-for file in "${args[@]}"; do
-  if [ ! -f "$file" ]; then
-    echo "File does not exist: $file"
+for item in "${args[@]}"; do
+  if [ -n "$content" ]; then
+    echo "Content was provided, so no files are expected. We will ignore them!"
+    break
+  fi
+  if [ ! -e "$item" ]; then
+    echo "File/dir does not exist: $item"
     exit 1
   fi
-  if [ ! -r "$file" ]; then
-    echo "File is not readable: $file"
+  if [ ! -r "$item" ]; then
+    echo "File is not readable: $item"
     exit 1
   fi
 done
@@ -77,6 +81,12 @@ done
 
 date=$(date +%Y-%m-%d)
 dir="$date/$name"
+
+# confirm dir doesnt already exist or bail
+if [ -d "${0%/*}/$dir" ]; then
+  echo "Directory already exists: $dir"
+  exit 1
+fi
 
 mkdir -p "${0%/*}/$dir"
 
@@ -94,13 +104,14 @@ if ! git diff-index --quiet HEAD --; then
     exit 1
 fi
 
-# insert the files
+# insert the files keeping the originating structure.
+cp -r "${args[@]}" "$dir"
 
 # Restore the original working directory
 popd > /dev/null || exit 2
 
-
 # If they are not, print an error message and exit.
 
 # Finally, print the link to the public site.
+echo changes added for $dir
 

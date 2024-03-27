@@ -14,6 +14,6 @@ export const trivial = test(({t, l}) => {
   l('hi')
 });
 
-export const fail = test(({t, l}) => {
+// just doing some controlled inception testing on the main shell script that streamlines this simple github web artifact
+// share hosting project.
 
-});
