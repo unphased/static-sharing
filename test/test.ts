@@ -14,26 +14,28 @@ isProgramLaunchContext() && LaunchTests(path.resolve(__dirname), {echo_test_logg
 // just doing some controlled inception testing on the main shell script that streamlines this simple github web artifact
 // share hosting project.
 
-export const happypath_inception = test(async ({t, l, spawn, f, c, a: {eq, match}}) => {
+export const happypath_inception = test(async ({t, l, spawn, cleanup, a: {eq, match}}) => {
   const sourceDir = '/tmp/static_sharing_test_dir_1';
   fs.mkdirSync(sourceDir, {recursive: true});
   const file = path.resolve(sourceDir, 'test.html');
   const name = 'test';
   // make a source file, simplest possible html file
-  fs.writeFileSync(file, `<body><p>hello world</p></body>`);
+  const body = `<body><p>hello world</p></body>`;
+  fs.writeFileSync(file, body);
   const date = execSync("date +%Y-%m-%d").toString().trim();
-  c(async () => {
+  cleanup(async () => {
     l('Running cleanup to erase these test dirs...');
+    l('But first show some contents');
+    await spawn("ls", ["-la", path.resolve(__dirname, '..', date)]);
     await spawn("rm", ["-rf", path.resolve(__dirname, '..', date, name)]);
+    await spawn("ls", ["-la", sourceDir]);
     await spawn("rm", ["-rf", sourceDir]);
   });
-
-  // its def gonna be a bit unkosher since running script will tamper with git status.
   
-  const ret = await spawn(path.resolve(__dirname, '..', 'publish.sh'), ['-n', name, sourceDir], {bufferStdout: true, showStdoutWhenBuffering: true});
+  // script under test
+  const ret = await spawn(path.resolve(__dirname, '..', 'publish.sh'), ['-n', name, sourceDir + '/'], {bufferStdout: true, showStdoutWhenBuffering: true});
 
-  const regex = RegExp(`changes added for ${date}/${name}`);
-  match(ret.stdout, regex);
-
+  match(ret.stdout, RegExp(`changes added for ${date}/${name}`));
+  eq(body, fs.readFileSync(path.resolve(__dirname, '..', date, name, 'test.html')).toString());
 });
 

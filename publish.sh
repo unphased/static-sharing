@@ -111,12 +111,11 @@ if git diff-index --quiet HEAD --; then
 fi
 
 # insert the files keeping the originating structure.
+echo "COPYING:" cp -r "${args[@]}" "$dir"
 cp -r "${args[@]}" "$dir"
 
 # Restore the original working directory
 popd > /dev/null || exit 2
-
-# If they are not, print an error message and exit.
 
 # Finally, print the link to the public site.
 echo changes added for $dir
