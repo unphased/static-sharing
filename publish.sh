@@ -103,7 +103,6 @@ ORIGINAL_DIR=$(pwd)
 if ! git -C "${0%/*}" diff-index --quiet HEAD --; then
     echo "Git is not in a clean state in this static-sharing repo. Please commit or stash your changes."
     # Restore the original working directory
-    popd > /dev/null || exit 2
     exit 1
 fi
 
@@ -111,6 +110,9 @@ fi
 echo "COPYING:" cp -r "${args[@]}" "${0%/*}/$dir"
 cp -r "${args[@]}" "${0%/*}/$dir"
 
-# Finally, print the link to the public site.
+mapfile -t finalfiles < <(find "${0%/*}/$dir" -type f)
+urls=("${finalfiles[@]/#/https://unphased.github.io/static-sharing/$dir/}")
+
 echo changes added for $dir
+echo "urls: ${urls[@]}"
 
