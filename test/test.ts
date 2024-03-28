@@ -28,6 +28,10 @@ export const happypath_inception = test(async ({t, l, spawn, cleanup, a: {eq, ma
     l('But first show some contents');
     await spawn("ls", ["-la", path.resolve(__dirname, '..', date)]);
     await spawn("rm", ["-rf", path.resolve(__dirname, '..', date, name)]);
+    if (fs.readdirSync(path.resolve(__dirname, '..', date)).length === 0) {
+      l('also cleaning up date dir since we see that it is empty (so likely we made it)')
+      await spawn("rm", ["-rf", path.resolve(__dirname, '..', date)]);
+    }
     await spawn("ls", ["-la", sourceDir]);
     await spawn("rm", ["-rf", sourceDir]);
   });
