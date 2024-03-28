@@ -23,7 +23,7 @@ export const happypath_inception = test(async ({t, l, spawn, f, c, a: {eq, match
   fs.writeFileSync(file, `<body><p>hello world</p></body>`);
   const date = execSync("date +%Y-%m-%d").toString().trim();
   c(async () => {
-    l('Running cleaning up to erase these test dirs...');
+    l('Running cleanup to erase these test dirs...');
     await spawn("rm", ["-rf", path.resolve(__dirname, '..', date, name)]);
     await spawn("rm", ["-rf", sourceDir]);
   });
@@ -32,7 +32,7 @@ export const happypath_inception = test(async ({t, l, spawn, f, c, a: {eq, match
   
   const ret = await spawn(path.resolve(__dirname, '..', 'publish.sh'), ['-n', name, sourceDir], {bufferStdout: true, showStdoutWhenBuffering: true});
 
-  const regex = RegExp(`changes added for ${date}/${sourceDir}`);
+  const regex = RegExp(`changes added for ${date}/${name}`);
   match(ret.stdout, regex);
 
 });
