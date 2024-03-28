@@ -99,19 +99,13 @@ mkdir -p "${0%/*}/$dir"
 # Store the current working directory (in case?)
 ORIGINAL_DIR=$(pwd)
 
-# Change to the script directory
-pushd "${0%/*}" > /dev/null || exit 2
-
 # Check for uncommitted changes
-if git diff-index --quiet HEAD --; then
+if ! git -C "${0%/*}" diff-index --quiet HEAD --; then
     echo "Git is not in a clean state in this static-sharing repo. Please commit or stash your changes."
     # Restore the original working directory
     popd > /dev/null || exit 2
     exit 1
 fi
-
-# Restore the original working directory
-popd > /dev/null || exit 2
 
 # insert the files keeping the originating structure.
 echo "COPYING:" cp -r "${args[@]}" "${0%/*}/$dir"
