@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Accepts a list of arguments which are paths to files. (it is reasonable to pipe a call to find or fd or something in)
 # A new dir will be made based on the date, a descriptive name is prompted for (or can be specifiied with a flag), and
