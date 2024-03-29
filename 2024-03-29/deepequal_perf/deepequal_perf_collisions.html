@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Plot</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uplot@1.6.30/dist/uPlot.min.css" />
+<script type="module">import uplot from 'https://cdn.jsdelivr.net/npm/uplot@1.6.30/+esm';
+window.data = [{"opts":{"title":"runtimes (ms)","class":"uplot-chart","width":1800,"height":700,"focus":{"alpha":0.1},"cursor":{"focus":{"prox":5},"drag":{"x":true}},"scales":{"x":{"time":false}},"series":[{},{"show":true,"spanGaps":true,"label":"deepequal with plain integer","stroke":"red","width":1},{"show":true,"spanGaps":true,"label":"deepequal with object with integer prop","stroke":"green","width":1},{"show":true,"spanGaps":true,"label":"deepequal with array with single integer","stroke":"blue","width":1},{"show":true,"spanGaps":true,"label":"deepequal with array with 5 integer props","stroke":"orange","width":1},{"show":true,"spanGaps":true,"label":"deepequal with int in obj w/ other props","stroke":"purple","width":1},{"show":true,"spanGaps":true,"label":"builtin with plain integer","stroke":"brown","width":1},{"show":true,"spanGaps":true,"label":"builtin with object with integer prop","stroke":"black","width":1},{"show":true,"spanGaps":true,"label":"builtin with array with single integer","stroke":"pink","width":1},{"show":true,"spanGaps":true,"label":"builtin with array with 5 integer props","stroke":"gray","width":1},{"show":true,"spanGaps":true,"label":"builtin with int in obj w/ other props","stroke":"cyan","width":1}]},"data":[[5,8,11,17,25,38,57,85,128,192,288,432,649,973,1460,2189,3284,4926,7389,11084],[0.532042,0.057792,0.059834,0.056042,0.199,0.211791,0.110875,0.113459,0.111792,0.120875,0.146625,0.15375,0.174166,0.229959,0.30825,0.373459,0.51425,0.739959,1.001292,1.529458],[1.005875,1.350084,1.812208,2.841167,4.049042,6.277459,9.10575,13.59825,19.7625,30.380583,44.614584,65.56075,84.668666,127.729417,194.169333,285.639333,435.299125,659.534667,983.737959,1463.378667],[0.80575,1.134042,1.511958,2.329334,3.338292,5.058333,7.490291,11.119167,16.719167,24.846833,37.482,55.708958,85.393041,127.607625,190.800875,288.946458,433.402208,646.427834,976.169208,1457.205667],[0.80525,1.152042,1.525167,2.2925,3.4405,5.108541,7.654166,11.174375,16.74975,24.977333,38.188791,56.276708,85.248666,129.084667,191.477792,287.213208,430.2945,648.069416,973.935542,1455.6161670000001],[1.6095,2.419084,3.306458,5.183459,7.412667,11.303042,16.777208,25.103334,38.220541,56.475625,84.683333,128.690083,191.6705,287.994042,434.352125,646.876208,973.61575,1461.701125,2195.67675,3311.685708],[0.404833,0.005167,0.003458,0.003792,0.082208,0.00625,0.005958,0.007583,0.011334,0.107625,0.022834,0.028833,0.041333,0.060666,0.091042,0.135167,0.212625,0.317542,0.170208,0.230833],[0.039083,0.011041,0.103625,0.01625,0.016083,0.020708,0.03075,0.045542,0.067459,0.101125,0.150875,0.22625,0.349375,0.517375,0.773791,1.054709,1.148667,1.089208,1.478958,2.215875],[0.067125,0.0055,0.006667,0.009833,0.014042,0.020959,0.030917,0.046542,0.068417,0.102792,0.154708,0.230916,0.347542,0.547292,0.860792,1.026959,0.993166,1.456375,1.662125,2.553291],[0.056417,0.008833,0.01025,0.015292,0.022084,0.036375,0.048834,0.0735,0.109334,0.163833,0.247042,0.401209,0.55625,0.835583,1.077667,1.410792,1.317417,1.969625,2.928708,4.389042],[0.074541,0.013666,0.016625,0.024125,0.037833,0.051834,0.082583,0.120417,0.177,0.263375,0.396084,0.611125,0.893708,1.304833,1.7685,1.90025,2.58925,3.9265,6.480875,8.842208]],"mappingSX":[null,null,null,null,null,null,null,null,null,null]},{"opts":{"title":"relative runtime (ratio deepequal / builtin)","class":"uplot-chart","width":1800,"height":700,"focus":{"alpha":0.1},"cursor":{"focus":{"prox":5},"drag":{"x":true}},"scales":{"x":{"time":false}},"series":[{},{"show":true,"spanGaps":true,"label":"deepequal over builtin with plain integer","stroke":"red","width":1},{"show":true,"spanGaps":true,"label":"deepequal over builtin with object with integer prop","stroke":"green","width":1},{"show":true,"spanGaps":true,"label":"deepequal over builtin with array with single integer","stroke":"blue","width":1},{"show":true,"spanGaps":true,"label":"deepequal over builtin with array with 5 integer props","stroke":"orange","width":1},{"show":true,"spanGaps":true,"label":"deepequal over builtin with int in obj w/ other props","stroke":"purple","width":1}]},"data":[[5,8,11,17,25,38,57,85,128,192,288,432,649,973,1460,2189,3284,4926,7389,11084],[1.3142258659743649,11.184826785368687,17.303065355696933,14.779008438818567,2.4206889840404826,33.886559999999996,18.609432695535414,14.96228405644204,9.863419798835363,1.1231126596980254,6.421345362179206,5.332431588804495,4.2137275300607255,3.7905746216991396,3.385799960457811,2.762945097545998,2.418577307466196,2.33027127120192,5.88275521714608,6.625820398296604],[25.736893278407493,122.27914138212118,17.488135102533175,174.84104615384615,251.75912454144128,303.14173266370483,296.1219512195122,298.5870185762593,292.95572125290914,300.4260370828183,295.7056106048053,289.771270718232,242.34323005366727,246.87976226141578,250.93252958486207,270.82288384758266,378.9602426116533,605.5176486033889,665.1561159951805,660.4066867490269],[12.003724394785847,206.18945454545457,226.7823608819559,236.8894538797925,237.7362199116935,241.34419581086885,242.27095125659022,238.9060848266082,244.37153046757382,241.7195209743949,242.275771130129,241.25204836390722,245.7056729834092,233.16186788770892,221.65735160178068,281.361240322155,436.3844593955089,443.86084215947125,587.3019225389186,570.7166425605228],[14.273180069837105,130.4247707460659,148.79678048780485,149.91498822913942,155.79152327476908,140.44098969072166,156.7384609083835,152.03231292517006,153.19799879269027,152.45605586176168,154.5842043053408,140.2678105426349,153.25602876404494,154.48455389829616,177.6780693850698,203.58295765782623,326.61981741544247,329.03187967252654,332.547847719882,331.6478099320991],[21.592143920795266,177.01478120883945,198.8846917293233,214.8584041450777,195.93125049559907,218.06231431106994,203.15571001295666,208.4700166919953,215.93525988700566,214.43046986236354,213.80144868260268,210.578986295766,214.46658192608774,220.71333419678993,245.6048204693243,340.41637047756876,376.0223037559139,372.265662804024,338.79325708334136,374.5315319431527]],"mappingSX":[null,null,null,null,null]}];
+
+// window.data has been seeded above with a json literal: a list of plots to make.
+// Also, legendFn has also been surgically injected into window.data.
+
+// set up the uPlot hooks so we can obtain mouse x and s coords, and implement the click event handler.
+
+window.data.forEach((d) => {
+  const el = document.createElement("div");
+  document.body.appendChild(el);
+  let curIdx = null;
+  let curSid = null;
+  uplot({ ...d.opts, hooks: d.mappingX || d.mappingSX ? {
+    setCursor: [(u) => {
+      curIdx = u.cursor.idx;
+    }],
+    setSeries: [(u, sid) => {
+      curSid = sid;
+    }],
+    ready: [(u) => {
+      const el = u.over;
+      el.addEventListener('click', (e) => {
+        // sid will be null unless hovering a datapoint
+        if (curSid === null) return;
+        // perform mapping
+        // console.log(curIdx, curSid, d.mappingX, d.mappingSX);
+        let mapping;
+        if (d.mappingSX[curSid-1]) {
+          mapping = d.mappingSX[curSid-1][curIdx];
+          console.log('mapped sx', mapping);
+        } else if (d.mappingX) {
+          mapping = d.mappingX[curIdx];
+          console.log('mapped x', mapping);
+        }
+        if (mapping) {
+          console.log("currently on", location.href, "redirecting to", mapping, `with href suffix translation "${d.targetNavGroupId}"`);
+          const targetURL = (d.targetNavGroupId ? location.href.replace(/:%20.*$/, ':%20' + encodeURI(d.targetNavGroupId)) : location.href) + '#' + mapping;
+          console.log('targetURL', targetURL);
+          location.href = targetURL;
+        }
+      });
+    }],
+  } : {}}, d.data, el);
+});
+</script>
+</head><body></body></html>
