@@ -119,5 +119,5 @@ mapfile -t finalfiles < <($FINDPROG "${0%/*}/$dir" -type f -printf '%P')
 urls=("${finalfiles[@]/#/https://unphased.github.io/static-sharing/$dir/}")
 
 echo changes added for $dir
-echo "urls: ${urls[@]}"
+echo "urls: ${urls[*]}"
 
